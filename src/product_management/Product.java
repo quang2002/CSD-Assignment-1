@@ -63,6 +63,6 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%6s | %20s | %6d | %6d | %f", code, name, quantity, saled, price);
+        return String.format("%6s | %20s | %10d | %6d | %f", code, name, quantity, saled, price);
     }
 }

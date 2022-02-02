@@ -10,7 +10,7 @@ import utilities.Input;
 
 public class ProductList extends LinkedList<Product> {
 
-    public boolean loadFromFile(String filename) {
+    public boolean loadDataFromFile(String filename) {
         try {
             try (BufferedReader br = new BufferedReader(new java.io.FileReader(filename))) {
                 String line;
@@ -21,9 +21,9 @@ public class ProductList extends LinkedList<Product> {
                         addTail(new Product(
                                 data[0].trim(),
                                 data[1].trim(),
-                                Integer.parseInt(data[2]),
-                                Integer.parseInt(data[3]),
-                                Double.parseDouble(data[4])));
+                                Integer.parseInt(data[2].trim()),
+                                Integer.parseInt(data[3].trim()),
+                                Double.parseDouble(data[4].trim())));
                     }
                 }
             }
@@ -34,7 +34,7 @@ public class ProductList extends LinkedList<Product> {
         return true;
     }
 
-    public boolean saveToFile(String filename) {
+    public boolean saveDataToFile(String filename) {
         try {
             try (FileWriter fw = new FileWriter(filename)) {
                 Node<Product> it = getHead();
@@ -51,7 +51,7 @@ public class ProductList extends LinkedList<Product> {
     }
 
     public void display() {
-        System.out.printf("%6s | %20s | %6s | %6s | %s", "Code", "Name", "Quantity", "Saled", "Price");
+        System.out.printf("%6s | %20s | %10s | %6s | %s\n", "Code", "Name", "Quantity", "Saled", "Price");
         System.out.println(this);
     }
 

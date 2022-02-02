@@ -200,4 +200,36 @@ public class LinkedList<T> implements Serializable {
             }
         }
     }
+
+    public int getSize() {
+        return reduce(((result, value) -> result + 1), 0);
+    }
+
+    public Node<T> nodeAt(int position) {
+        // find node at position
+        // if position is negative, find node at position from tail
+        // if position is positive, find node at position from head
+
+        int size = getSize();
+
+        if (position < 0) {
+            position = size + position;
+        }
+
+        if (position < 0 || position >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Node<T> it = head;
+
+        while (position-- > 0) {
+            it = it.getNext();
+        }
+
+        return it;
+    }
+
+    public T get(int position) {
+        return nodeAt(position).getData();
+    }
 }

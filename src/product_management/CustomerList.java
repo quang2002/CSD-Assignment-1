@@ -11,7 +11,7 @@ public class CustomerList extends LinkedList<Customer> {
 
     }
 
-    public boolean loadDataFromeFile(String filename) {
+    public boolean loadDataFromFile(String filename) {
         try {
             try (BufferedReader br = new BufferedReader(new java.io.FileReader(filename))) {
                 String line;
@@ -86,7 +86,7 @@ public class CustomerList extends LinkedList<Customer> {
     }
 
     public void display() {
-        System.out.printf("%6s | %20s | %10s", "Code", "Name", "Phone");
+        System.out.printf("%6s | %20s | %10s\n", "Code", "Name", "Phone");
         System.out.println(this);
     }
 

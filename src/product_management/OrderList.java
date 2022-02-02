@@ -83,7 +83,7 @@ public class OrderList extends LinkedList<Order> {
     }
 
     public void display() {
-        System.out.printf("%6s | %6s | %6s | %6s", "Customer", "Product", "Quantity", "Price");
+        System.out.printf("%6s | %6s | %6s | %6s\n", "Customer", "Product", "Quantity", "Price");
         System.out.println(this);
     }
 
