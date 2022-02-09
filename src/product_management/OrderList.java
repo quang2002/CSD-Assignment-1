@@ -12,9 +12,10 @@ public class OrderList extends LinkedList<Order> {
 
     }
 
-    public boolean loadDataFromeFile(String filename) {
+    public boolean loadDataFromFile(String filename) {
         try {
             try (BufferedReader br = new BufferedReader(new java.io.FileReader(filename))) {
+                clear();
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] data = line.split("\\|");

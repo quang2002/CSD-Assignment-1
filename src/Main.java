@@ -1,5 +1,7 @@
 import product_management.Management;
 import utilities.Input;
+import linked_list.Node;
+import product_management.*;
 
 public class Main {
 
@@ -60,15 +62,34 @@ public class Main {
         });
     }
 
+    public static int getMoreChoice() {
+        System.out.println("\n\nMORE MENU");
+        System.out.println("1. Load data & traverse");
+        System.out.println("2. Delete by code & traverse");
+        System.out.println("3. Search by code & update & traverse");
+        System.out.println("4. Add more products & traverse");
+        System.out.println("5. Sort by saled & traverse");
+        System.out.println("6. Back to main menu");
+
+        return Input.getInteger("Enter your choice: ", (choice) -> {
+            if (choice < 1 || choice > 6) {
+                System.out.println("Invalid choice");
+                return false;
+            }
+            return true;
+        });
+    }
+
     public static int getMainMenuChoice() {
         System.out.println("\n\nMAIN MENU");
         System.out.println("1. Product");
         System.out.println("2. Customer");
         System.out.println("3. Order");
         System.out.println("4. Exit");
+        System.out.println("5. More");
 
         return Input.getInteger("Enter choice: ", (choice) -> {
-            if (choice < 1 || choice > 4) {
+            if (choice < 1 || choice > 5) {
                 System.out.println("Invalid choice");
                 return false;
             }
@@ -175,6 +196,50 @@ public class Main {
                         }
 
                         if (orderChoice == 4) {
+                            break;
+                        }
+                    }
+                    break;
+                case 5:
+                    while (true) {
+                        int moreChoice = getMoreChoice();
+
+                        switch (moreChoice) {
+                            case 1:
+                                management.productList.loadDataFromFile("product1.txt");
+                                management.displayProduct();
+                                break;
+                            case 2:
+                                Node<Product> a1 = management.productList.findProductByCode("2");
+                                if (a1 == null) {
+                                    System.out.println("Product code is not exist");
+                                    return;
+                                } else {
+                                    management.productList.remove(a1);
+                                    management.displayProduct();
+                                }
+                                break;
+                            case 3:
+                                Node<Product> a2 = management.productList.findProductByCode("3");
+                                if (a2 == null) {
+                                    System.out.println("Product code is not exist");
+                                    return;
+                                } else {
+                                    a2.getData().setQuantity(9);
+                                    management.displayProduct();
+                                }
+                                break;
+                            case 4:
+                                management.productList.addTail(new Product("6", "E", 3, 2, 1.0));
+                                management.displayProduct();
+                                break;
+                            case 5:
+                                management.productList.sort((a, b) -> a.getSaled() - b.getSaled());
+                                management.displayProduct();
+                                break;
+                        }
+
+                        if (moreChoice == 6) {
                             break;
                         }
                     }

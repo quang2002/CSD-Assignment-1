@@ -1,6 +1,7 @@
 package product_management;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class Product implements Serializable {
     private String code;
@@ -63,6 +64,6 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%6s | %20s | %10d | %6d | %f", code, name, quantity, saled, price);
+        return String.format(Locale.US, "%6s | %20s | %10d | %6d | %f", code, name, quantity, saled, price);
     }
 }

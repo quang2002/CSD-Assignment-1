@@ -4,9 +4,9 @@ import linked_list.Node;
 import utilities.Input;
 
 public class Management {
-    ProductList productList = new ProductList();
-    CustomerList customerList = new CustomerList();
-    OrderList orderList = new OrderList();
+    public ProductList productList = new ProductList();
+    public CustomerList customerList = new CustomerList();
+    public OrderList orderList = new OrderList();
 
     public void addProduct() {
         productList.addProduct();
