@@ -201,48 +201,14 @@ public class Main {
                     }
                     break;
                 case 5:
-                    while (true) {
-                        int moreChoice = getMoreChoice();
-
-                        switch (moreChoice) {
-                            case 1:
-                                management.productList.loadDataFromFile("product1.txt");
-                                management.displayProduct();
-                                break;
-                            case 2:
-                                Node<Product> a1 = management.productList.findProductByCode("2");
-                                if (a1 == null) {
-                                    System.out.println("Product code is not exist");
-                                    return;
-                                } else {
-                                    management.productList.remove(a1);
-                                    management.displayProduct();
-                                }
-                                break;
-                            case 3:
-                                Node<Product> a2 = management.productList.findProductByCode("3");
-                                if (a2 == null) {
-                                    System.out.println("Product code is not exist");
-                                    return;
-                                } else {
-                                    a2.getData().setQuantity(9);
-                                    management.displayProduct();
-                                }
-                                break;
-                            case 4:
-                                management.productList.addTail(new Product("6", "E", 3, 2, 1.0));
-                                management.displayProduct();
-                                break;
-                            case 5:
-                                management.productList.sort((a, b) -> a.getSaled() - b.getSaled());
-                                management.displayProduct();
-                                break;
-                        }
-
-                        if (moreChoice == 6) {
-                            break;
-                        }
-                    }
+                    Ordering t = new Ordering();
+                    t.loadFiles("product.txt", "customer.txt");
+                    t.sell("P1", "C1", 1); // Successful
+                    t.sell("P1", "C2", 1); // Not successful because quantity=selled
+                    t.sell("P2", "C2", 2); // Successful
+                    t.displayProduct();
+                    t.displayOrdering();
+                    System.out.println();
                     break;
                 default:
                     return;
